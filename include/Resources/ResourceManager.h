@@ -17,7 +17,7 @@ class Ref;
 
 class ResourceManager {
 private:
-    static ResourceManager *instance;
+  static ResourceManager *instance;
   std::map<std::string, Resource*> resourceRegistry;
   std::map<std::string, int> resourceRefMap;
 

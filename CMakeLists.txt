@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories("${PROJECT_SOURCE_DIR}/include/")
 
-add_executable(titus main.cpp src/Resources/ResourceManager.cpp src/Resources/TestResource.cpp)
+add_executable(titus main.cpp src/Resources/ResourceManager.cpp src/Resources/TestResource.cpp include/Files/FileSystem.h include/Files/FilePath.h include/Files/FileDriver.h)
