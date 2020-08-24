@@ -13,15 +13,12 @@
 
 class UnixFileDriver : public FileDriver {
 public:
-    void readFile(const FilePath& filePath, char*& dataPointer, int& dataSize) override {
+    std::vector<char> readFile(const FilePath& filePath) override {
       std::ifstream input(filePath.getFilePath(), std::ios::binary);
 
-      std::vector<char> bytes(
+      return std::vector<char>(
               (std::istreambuf_iterator<char>(input)),
               (std::istreambuf_iterator<char>()));
-
-      dataPointer = bytes.data();
-      dataSize = bytes.size();
     }
 };
 

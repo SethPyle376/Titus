@@ -16,5 +16,7 @@ int main() {
 
   File testFile = FileSystem::getInstance()->readFile("Resources:/test.txt");
 
+  std::string testString = FileSystem::getInstance()->readFileToString("Resources:/test.txt");
+
   return 0;
 }

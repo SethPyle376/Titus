@@ -18,7 +18,9 @@ private:
 public:
   FileSystem();
 
-  File readFile(std::string filePath);
+  File readFile(const std::string& filePath);
+
+  std::string readFileToString(const std::string& filepath);
 
   static FileSystem* getInstance();
 };

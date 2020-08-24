@@ -21,12 +21,16 @@ FileSystem::FileSystem() {
 #endif
 }
 
-File FileSystem::readFile(std::string filePath) {
+File FileSystem::readFile(const std::string& filePath) {
   FilePath path(filePath, fsType);
 
-  File newFile{nullptr, 0};
+  File newFile;
 
-  driver->readFile(path, newFile.data, newFile.dataSize);
+  newFile.data = driver->readFile(path);
 
   return newFile;
+}
+
+std::string FileSystem::readFileToString(const std::string &filepath) {
+  return std::string(this->readFile(filepath).data.data());
 }

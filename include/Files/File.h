@@ -7,8 +7,7 @@
 
 class File {
 public:
-    char* data;
-    int dataSize;
+    std::vector<char> data;
 };
 
 #endif //TITUS_FILE_H

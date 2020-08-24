@@ -14,7 +14,7 @@
  */
 class FileDriver {
 public:
-    virtual void readFile(const FilePath& filePath, char*& dataPointer, int& dataSize) = 0;
+    virtual std::vector<char> readFile(const FilePath& filePath) = 0;
 };
 
 #endif //TITUS_FILEDRIVER_H
