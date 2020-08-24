@@ -6,17 +6,28 @@
 #define TITUS_FILEPATH_H
 
 #include <string>
+#include <regex>
+
+#include "FileSystemType.h"
 
 class FilePath {
 private:
+    FileSystemType fsType;
     std::string filePath;
+
+    void processFilePath() {
+      this->filePath = std::regex_replace(filePath, std::regex("Resources:/"), "./Resources/");
+      this->filePath = std::regex_replace(filePath, std::regex("User:/"), "./User/");
+      this->filePath = std::regex_replace(filePath, std::regex("Config:/"), "./Config/");
+    }
 public:
-    FilePath(const std::string& filePath) {
+    FilePath(const std::string& filePath, FileSystemType fsType) {
+      this->fsType = fsType;
       this->filePath = filePath;
+      processFilePath();
     }
 
-    std::string getFilePath() {
-      // Here we'll transform the path to a standardized format?
+    std::string getFilePath() const {
       return filePath;
     }
 };
