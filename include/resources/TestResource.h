@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-#include "Resources/Resource.h"
+#include "resources/Resource.h"
 
 class TestResource : public Resource {
 public:

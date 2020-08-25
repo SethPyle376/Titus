@@ -2,7 +2,7 @@
 // Created by seth on 8/23/20.
 //
 
-#include "Resources/ResourceManager.h"
+#include "resources/ResourceManager.h"
 
 ResourceManager* ResourceManager::instance = nullptr;
 

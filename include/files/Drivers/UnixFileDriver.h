@@ -9,7 +9,7 @@
 #include <iterator>
 #include <fstream>
 
-#include "Files/FileDriver.h"
+#include "files/FileDriver.h"
 
 class UnixFileDriver : public FileDriver {
 public:

@@ -9,8 +9,8 @@
 #include <string>
 #include <iostream>
 
-#include "Resources/Resource.h"
-#include "Resources/TestResource.h"
+#include "resources/Resource.h"
+#include "resources/TestResource.h"
 
 template<class T>
 class Ref;

@@ -7,7 +7,7 @@
 
 #include <string>
 
-#include "Resources/ResourceManager.h"
+#include "resources/ResourceManager.h"
 
 class ResourceManager;
 

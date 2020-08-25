@@ -2,7 +2,7 @@
 // Created by seth on 8/24/20.
 //
 
-#include "Files/FileSystem.h"
+#include "files/FileSystem.h"
 
 FileSystem* FileSystem::instance = nullptr;
 

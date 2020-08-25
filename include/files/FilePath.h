@@ -16,7 +16,7 @@ private:
     std::string filePath;
 
     void processFilePath() {
-      this->filePath = std::regex_replace(filePath, std::regex("Resources:/"), "./Resources/");
+      this->filePath = std::regex_replace(filePath, std::regex("resources:/"), "./resources/");
       this->filePath = std::regex_replace(filePath, std::regex("User:/"), "./User/");
       this->filePath = std::regex_replace(filePath, std::regex("Config:/"), "./Config/");
     }
