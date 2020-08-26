@@ -6,6 +6,8 @@
 #include "resources/ResourceManager.h"
 #include "resources/TestResource.h"
 
+#include "core/testing/TestSubsystem.h"
+
 int main() {
 
   {
@@ -30,6 +32,11 @@ int main() {
     delete testNode2;
     delete testNode;
 
+  TestSubsystem* testSubsystem = new TestSubsystem();
+  TestComponent testComponent;
+  testSubsystem->registerComponent(&testComponent);
+
+  testSubsystem->update(420);
 
   return 0;
 }
