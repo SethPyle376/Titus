@@ -10,7 +10,11 @@
 #include "TestComponent.h"
 
 class TestSubsystem : public Subsystem<TestComponent> {
+private:
+    static TestSubsystem* instance;
 public:
+    static TestSubsystem* getInstance();
+
     void update(float delta) override {
       for (TestComponent* component : this->components) {
         std::cout << component->testString << std::endl;
@@ -21,5 +25,7 @@ public:
       return "TEST";
     }
 };
+
+
 
 #endif //TITUS_TESTSUBSYSTEM_H

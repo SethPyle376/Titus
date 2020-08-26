@@ -30,13 +30,11 @@ int main() {
   Node* testNode3 = new Node(testNode);
   Node* testNode4 = new Node(testNode2);
 
-  auto* testSubsystem = new TestSubsystem();
   auto* testComponent = new TestComponent();
-  testSubsystem->registerComponent(testComponent);
 
-  testNode4->addComponent(testComponent);
+  testNode2->addComponent(testComponent);
 
-  testSubsystem->update(420);
+  TestSubsystem::getInstance()->update(123);
 
   return 0;
 }

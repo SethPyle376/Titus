@@ -10,6 +10,8 @@
 
 class TestComponent : public Component {
 public:
+    TestComponent();
+    ~TestComponent();
     std::string getType() override {
       return "TEST";
     }
