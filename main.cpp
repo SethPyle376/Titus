@@ -1,6 +1,7 @@
 #include <iostream>
 #include <resources/Ref.h>
 #include <files/FileSystem.h>
+#include <scene/Node.h>
 
 #include "resources/ResourceManager.h"
 #include "resources/TestResource.h"
@@ -19,6 +20,16 @@ int main() {
   std::string testString = FileSystem::getInstance()->readFileToString("resources:/test.txt");
 
   std::cout << "TEST STRING: " << testString << std::endl;
+
+
+    Node* testNode = new Node();
+
+    Node* testNode2 = new Node(testNode);
+    Node* testNode3 = new Node(testNode);
+    Node* testNode4 = new Node(testNode2);
+    delete testNode2;
+    delete testNode;
+
 
   return 0;
 }

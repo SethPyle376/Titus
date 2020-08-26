@@ -16,9 +16,13 @@ public:
     std::vector<char> readFile(const FilePath& filePath) override {
       std::ifstream input(filePath.getFilePath(), std::ios::binary);
 
-      return std::vector<char>(
+      std::vector<char> data(
               (std::istreambuf_iterator<char>(input)),
               (std::istreambuf_iterator<char>()));
+
+      input.close();
+
+      return data;
     }
 };
 
