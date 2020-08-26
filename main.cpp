@@ -24,17 +24,17 @@ int main() {
   std::cout << "TEST STRING: " << testString << std::endl;
 
 
-    Node* testNode = new Node();
+  Node* testNode = new Node();
 
-    Node* testNode2 = new Node(testNode);
-    Node* testNode3 = new Node(testNode);
-    Node* testNode4 = new Node(testNode2);
-    delete testNode2;
-    delete testNode;
+  Node* testNode2 = new Node(testNode);
+  Node* testNode3 = new Node(testNode);
+  Node* testNode4 = new Node(testNode2);
 
-  TestSubsystem* testSubsystem = new TestSubsystem();
-  TestComponent testComponent;
-  testSubsystem->registerComponent(&testComponent);
+  auto* testSubsystem = new TestSubsystem();
+  auto* testComponent = new TestComponent();
+  testSubsystem->registerComponent(testComponent);
+
+  testNode4->addComponent(testComponent);
 
   testSubsystem->update(420);
 

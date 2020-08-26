@@ -3,6 +3,7 @@
 //
 
 #include "scene/Node.h"
+#include "core/Component.h"
 
 Node::Node() {
   this->localTransform = glm::mat4(1.0f);
@@ -32,6 +33,10 @@ Node::~Node() {
   for (Node* child : tempChildrenList) {
     delete child;
   }
+  std::set<Component*> tempComponentList = components;
+  for (Component* component : tempComponentList) {
+    delete component;
+  }
 }
 
 void Node::notifyChildCreation(Node *child) {
@@ -41,5 +46,14 @@ void Node::notifyChildCreation(Node *child) {
 void Node::notifyChildDeath(Node *child) {
   auto it = this->children.find(child);
   children.erase(it);
-  return;
+}
+
+void Node::addComponent(Component *component) {
+  this->components.insert(component);
+  component->setParentNode(this);
+}
+
+void Node::removeComponent(Component *component) {
+  this->components.erase(component);
+  component->removeParentNode();
 }
