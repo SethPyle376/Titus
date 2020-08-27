@@ -21,11 +21,22 @@ private:
     VkPhysicalDevice physicalDevice;
     VkDevice logicalDevice;
 
+    VkPhysicalDeviceProperties physicalDeviceProperties;
+    VkPhysicalDeviceFeatures physicalDeviceFeatures;
+    VkPhysicalDeviceMemoryProperties physicalDeviceMemoryProperties;
+
+
+    QueueFamilyIndices queueFamilyIndices;
+    std::vector<VkQueueFamilyProperties> queueFamilyProperties;
+
+    VkQueueFlags requestedQueueFlags;
+
     VulkanSwapchain* swapchain;
 
     void pickPhysicalDevice();
+    void initLogicalDevice();
 public:
-    VulkanDevice(VkInstance instance, VulkanSwapchain* swapchain);
+    VulkanDevice(VkInstance instance, VulkanSwapchain* swapchain, VkQueueFlags requestedQueueFlags);
 };
 
 #endif //TITUS_VULKANDEVICE_H

@@ -15,6 +15,8 @@
 struct QueueFamilyIndices {
     std::optional<uint32_t> graphicsFamily;
     std::optional<uint32_t> presentFamily;
+    std::optional<uint32_t> computeFamily;
+    std::optional<uint32_t> transferFamily;
 
     bool isComplete() {
       return graphicsFamily.has_value() && presentFamily.has_value();
@@ -31,5 +33,6 @@ bool isDeviceSuitable(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, std
 bool checkDeviceExtensionSupport(VkPhysicalDevice device, std::vector<const char *> deviceExtensions);
 QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device, VkSurfaceKHR vkSurface);
 SwapchainSupportDetails querySwapchainSupport(VkPhysicalDevice device, VkSurfaceKHR surface);
+uint32_t getQueueFamilyIndex(VkQueueFlagBits queueFlags, std::vector<VkQueueFamilyProperties> queueFamilyProperties);
 
 #endif //TITUS_VULKANUTILS_H

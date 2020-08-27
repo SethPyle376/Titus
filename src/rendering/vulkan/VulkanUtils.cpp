@@ -123,3 +123,40 @@ SwapchainSupportDetails querySwapchainSupport(VkPhysicalDevice device,
 
   return details;
 }
+
+
+uint32_t getQueueFamilyIndex(VkQueueFlagBits queueFlags, std::vector<VkQueueFamilyProperties> queueFamilyProperties) {
+  if (queueFlags & VK_QUEUE_COMPUTE_BIT) {
+    for (uint32_t i = 0;
+         i < static_cast<uint32_t>(queueFamilyProperties.size()); i++) {
+      if ((queueFamilyProperties[i].queueFlags & queueFlags) &&
+          ((queueFamilyProperties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) ==
+           0)) {
+        return i;
+        break;
+      }
+    }
+  }
+
+  if (queueFlags & VK_QUEUE_TRANSFER_BIT) {
+    for (uint32_t i = 0;
+         i < static_cast<uint32_t>(queueFamilyProperties.size()); i++) {
+      if ((queueFamilyProperties[i].queueFlags & queueFlags) &&
+          ((queueFamilyProperties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) ==
+           0) &&
+          ((queueFamilyProperties[i].queueFlags & VK_QUEUE_COMPUTE_BIT) == 0)) {
+        return i;
+        break;
+      }
+    }
+  }
+
+  for (uint32_t i = 0; i < static_cast<uint32_t>(queueFamilyProperties.size());
+       i++) {
+    if (queueFamilyProperties[i].queueFlags & queueFlags) {
+      return i;
+      break;
+    }
+  }
+  return 0;
+}
