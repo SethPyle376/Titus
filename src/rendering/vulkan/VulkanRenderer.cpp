@@ -9,6 +9,9 @@ VulkanRenderer::VulkanRenderer(SDL_Window* window) {
   volkInitialize();
   loadInstance();
   volkLoadInstance(this->instance);
+  swapchain = new VulkanSwapchain(instance);
+  swapchain->initSurface(window);
+  device = new VulkanDevice(instance, swapchain);
 }
 
 void VulkanRenderer::loadInstance() {

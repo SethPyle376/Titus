@@ -10,15 +10,13 @@
 #include "volk.h"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_vulkan.h"
+#include "VulkanDevice.h"
+#include "VulkanSwapchain.h"
 
 #include <rendering/Renderer.h>
 
 const std::vector<const char *> validationLayers = {
         "VK_LAYER_LUNARG_standard_validation"
-};
-
-const std::vector<const char *> deviceExtensions = {
-        VK_KHR_SWAPCHAIN_EXTENSION_NAME
 };
 
 const int MAX_FRAMES_IN_FLIGHT = 2;
@@ -35,6 +33,8 @@ private:
 
   SDL_Window* window;
   VkInstance instance;
+  VulkanDevice* device;
+  VulkanSwapchain* swapchain;
 
   void loadInstance();
   bool checkValidationLayerSupport();
