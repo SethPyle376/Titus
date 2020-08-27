@@ -20,10 +20,6 @@ public:
         std::cout << component->testString << std::endl;
       }
     }
-
-    std::string getType() override {
-      return "TEST";
-    }
 };
 
 

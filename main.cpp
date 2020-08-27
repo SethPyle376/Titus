@@ -1,7 +1,11 @@
 #include <iostream>
+
+#define VOLK_IMPLEMENTATION
+
 #include <resources/Ref.h>
 #include <files/FileSystem.h>
 #include <scene/Node.h>
+#include <rendering/RenderSubsystem.h>
 
 #include "resources/ResourceManager.h"
 #include "resources/TestResource.h"
@@ -35,6 +39,8 @@ int main() {
   testNode2->addComponent(testComponent);
 
   TestSubsystem::getInstance()->update(123);
+
+  RenderSubsystem::getInstance()->update(123);
 
   return 0;
 }

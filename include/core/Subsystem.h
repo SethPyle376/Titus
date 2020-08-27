@@ -23,7 +23,6 @@ public:
     }
 
     virtual void update(float delta) = 0;
-    virtual std::string getType() = 0;
 };
 
 #endif //TITUS_SUBSYSTEM_H
