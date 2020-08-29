@@ -12,6 +12,8 @@ VulkanRenderer::VulkanRenderer(SDL_Window* window) {
   swapchain = new VulkanSwapchain(instance);
   swapchain->initSurface(window);
   device = new VulkanDevice(instance, swapchain, VK_QUEUE_GRAPHICS_BIT | VK_QUEUE_TRANSFER_BIT | VK_QUEUE_COMPUTE_BIT);
+  swapchain->connect(device);
+  swapchain->createSwapchain();
 }
 
 void VulkanRenderer::loadInstance() {

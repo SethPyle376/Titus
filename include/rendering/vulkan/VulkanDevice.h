@@ -37,6 +37,9 @@ private:
     void initLogicalDevice();
 public:
     VulkanDevice(VkInstance instance, VulkanSwapchain* swapchain, VkQueueFlags requestedQueueFlags);
+
+    VkPhysicalDevice getPhysicalDevice() { return physicalDevice; }
+    VkDevice getLogicalDevice() { return logicalDevice; }
 };
 
 #endif //TITUS_VULKANDEVICE_H
