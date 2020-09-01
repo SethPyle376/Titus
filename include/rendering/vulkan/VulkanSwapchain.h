@@ -16,7 +16,7 @@ class VulkanDevice;
 class VulkanSwapchain {
 private:
     VkInstance instance;
-    VkSwapchainKHR swapchain;
+    VkSwapchainKHR swapchain = VK_NULL_HANDLE;
     VkSurfaceKHR surface;
 
     VulkanDevice* device;
@@ -24,9 +24,16 @@ private:
     VkFormat colorFormat;
     VkColorSpaceKHR colorSpace;
 
+    VkExtent2D swapchainExtent;
+
+    std::vector<VkImage> swapchainImages;
+    std::vector<VkImageView> swapchainImageViews;
+
     void selectColors();
+    void createImageViews();
 public:
     VulkanSwapchain(VkInstance instance);
+    ~VulkanSwapchain();
     void initSurface(SDL_Window* window);
     void connect(VulkanDevice* device);
     VkSurfaceKHR getSurface();
