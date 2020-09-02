@@ -10,6 +10,7 @@
 #include "volk.h"
 #include "VulkanSwapchain.h"
 #include "VulkanUtils.h"
+#include "managers/VulkanShaderModuleManager.h"
 
 const std::vector<const char *> deviceExtensions = {
         VK_KHR_SWAPCHAIN_EXTENSION_NAME
