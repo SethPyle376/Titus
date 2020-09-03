@@ -14,7 +14,7 @@ file(GLOB MAINSOURCES src/*.cpp)
 file(GLOB SUBSOURCES src/*/*.cpp)
 file(GLOB SUBSUBSOURCES src/*/*/*.cpp)
 
-set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES} include/rendering/vulkan/VulkanDevice.h include/rendering/RenderComponent.h src/rendering/vulkan/VulkanDevice.cpp include/rendering/vulkan/VulkanRenderer.h include/rendering/Renderer.h src/rendering/vulkan/VulkanRenderer.cpp src/rendering/RenderSubsystem.cpp include/rendering/vulkan/VulkanUtils.h src/rendering/vulkan/VulkanUtils.cpp include/rendering/vulkan/VulkanSwapchain.h src/rendering/vulkan/VulkanSwapchain.cpp include/rendering/vulkan/managers/VulkanShaderModuleResource.h src/rendering/vulkan/managers/VulkanShaderModuleResource.cpp include/rendering/vulkan/managers/VulkanShaderModuleManager.h src/rendering/vulkan/managers/VulkanShaderModuleManager.cpp)
+set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES} include/rendering/vulkan/VulkanDevice.h include/rendering/RenderComponent.h src/rendering/vulkan/VulkanDevice.cpp include/rendering/vulkan/VulkanRenderer.h include/rendering/Renderer.h src/rendering/vulkan/VulkanRenderer.cpp src/rendering/RenderSubsystem.cpp include/rendering/vulkan/VulkanUtils.h src/rendering/vulkan/VulkanUtils.cpp include/rendering/vulkan/VulkanSwapchain.h src/rendering/vulkan/VulkanSwapchain.cpp include/rendering/vulkan/managers/VulkanShaderModuleResource.h src/rendering/vulkan/managers/VulkanShaderModuleResource.cpp include/rendering/vulkan/managers/VulkanShaderModuleManager.h src/rendering/vulkan/managers/VulkanShaderModuleManager.cpp include/rendering/UiComponent.h src/rendering/RenderComponent.cpp src/rendering/UiComponent.cpp)
 
 add_executable(titus main.cpp ${SOURCE_FILES})
 

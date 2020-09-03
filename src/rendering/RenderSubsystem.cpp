@@ -24,3 +24,13 @@ void RenderSubsystem::initWindow() {
   window = SDL_CreateWindow("TITUS", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                             1080, 720, windowFlags);
 }
+
+void RenderSubsystem::update(float delta) {
+  for (auto component : this->Subsystem<RenderComponent>::components) {
+    std::cout << "FOUND RENDER COMPONENT" << std::endl;
+  }
+
+  for (auto component : this->Subsystem<UiComponent>::components) {
+    std::cout << "FOUND UI COMPONENT" << std::endl;
+  }
+}

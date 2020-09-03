@@ -8,7 +8,9 @@
 #include <core/Component.h>
 
 class RenderComponent : public Component {
-
+public:
+    RenderComponent();
+    ~RenderComponent();
 };
 
 #endif //TITUS_RENDERCOMPONENT_H

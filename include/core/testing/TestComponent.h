@@ -12,9 +12,6 @@ class TestComponent : public Component {
 public:
     TestComponent();
     ~TestComponent();
-    std::string getType() override {
-      return "TEST";
-    }
     std::string testString = "Hello world!";
 };
 

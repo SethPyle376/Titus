@@ -40,6 +40,9 @@ int main() {
 
   TestSubsystem::getInstance()->update(123);
 
+  RenderComponent testRenderComponent;
+  UiComponent testUiComponent;
+
   RenderSubsystem::getInstance()->update(123);
 
   return 0;

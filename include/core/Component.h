@@ -19,8 +19,6 @@ public:
       }
     }
 
-    virtual std::string getType() = 0;
-
     bool hadParentNode() {
       return parentNode != nullptr;
     }

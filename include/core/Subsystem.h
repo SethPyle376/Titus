@@ -16,12 +16,16 @@ protected:
 public:
     void registerComponent(T* component) {
       components.insert(component);
+      onComponentRegistered(component);
     }
 
     void unregisterComponent(T* component) {
       components.erase(component);
+      onComponentUnregistered(component);
     }
 
+    virtual void onComponentRegistered(T* component) {};
+    virtual void onComponentUnregistered(T* component) {};
     virtual void update(float delta) = 0;
 };
 
