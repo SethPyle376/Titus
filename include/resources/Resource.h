@@ -11,7 +11,7 @@ class Resource {
 public:
     virtual ~Resource() {}
     std::string path;
-    virtual void init(std::string) = 0;
+    virtual void init(const std::string& filename) = 0;
     virtual void destroy() = 0;
 };
 

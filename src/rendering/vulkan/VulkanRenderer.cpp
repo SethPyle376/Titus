@@ -68,3 +68,8 @@ void VulkanRenderer::loadInstance() {
 bool VulkanRenderer::checkValidationLayerSupport() {
   return false;
 }
+
+VulkanRenderer::~VulkanRenderer() {
+  delete swapchain;
+  delete device;
+}

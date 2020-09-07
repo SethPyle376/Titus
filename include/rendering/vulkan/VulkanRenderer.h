@@ -41,6 +41,7 @@ private:
 
 public:
     VulkanRenderer(SDL_Window* window);
+    ~VulkanRenderer();
 };
 
 #endif //TITUS_VULKANRENDERER_H

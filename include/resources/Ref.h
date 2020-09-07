@@ -19,6 +19,7 @@ private:
 public:
     T* resource;
 
+    Ref() = default;
     Ref(const std::string& filename, T* resource);
     ~Ref();
 };

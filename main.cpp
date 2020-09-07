@@ -6,6 +6,7 @@
 #include <files/FileSystem.h>
 #include <scene/Node.h>
 #include <rendering/RenderSubsystem.h>
+#include <rendering/vulkan/resources/VulkanMaterial.h>
 
 #include "resources/ResourceManager.h"
 #include "resources/TestResource.h"
@@ -44,6 +45,8 @@ int main() {
   UiComponent testUiComponent;
 
   RenderSubsystem::getInstance()->update(123);
+
+  ResourceManager::getInstance()->getResource<VulkanMaterial>("resources:/testMaterial.json");
 
   return 0;
 }

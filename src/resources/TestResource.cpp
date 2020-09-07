@@ -4,7 +4,7 @@
 
 #include <resources/TestResource.h>
 
-void TestResource::init(std::string filename) {
+void TestResource::init(const std::string& filename) {
   this->path = filename;
   std::cout << "LOADING TEST RESOURCE" << std::endl;
 }

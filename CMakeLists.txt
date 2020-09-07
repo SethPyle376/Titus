@@ -9,12 +9,13 @@ include_directories("${PROJECT_SOURCE_DIR}/include/")
 include_directories("${PROJECT_SOURCE_DIR}/external/glm")
 include_directories("${PROJECT_SOURCE_DIR}/external/volk")
 include_directories(${SDL2_INCLUDE_DIRS})
+include_directories("${PROJECT_SOURCE_DIR}/external/json/single_include")
 
 file(GLOB MAINSOURCES src/*.cpp)
 file(GLOB SUBSOURCES src/*/*.cpp)
-file(GLOB SUBSUBSOURCES src/*/*/*.cpp)
+file(GLOB SUBSUBSOURCES src/*/*/*.cpp src/*/*/*/*.cpp)
 
-set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES} include/rendering/vulkan/VulkanDevice.h include/rendering/RenderComponent.h src/rendering/vulkan/VulkanDevice.cpp include/rendering/vulkan/VulkanRenderer.h include/rendering/Renderer.h src/rendering/vulkan/VulkanRenderer.cpp src/rendering/RenderSubsystem.cpp include/rendering/vulkan/VulkanUtils.h src/rendering/vulkan/VulkanUtils.cpp include/rendering/vulkan/VulkanSwapchain.h src/rendering/vulkan/VulkanSwapchain.cpp include/rendering/vulkan/managers/VulkanShaderModuleResource.h src/rendering/vulkan/managers/VulkanShaderModuleResource.cpp include/rendering/vulkan/managers/VulkanShaderModuleManager.h src/rendering/vulkan/managers/VulkanShaderModuleManager.cpp include/rendering/UiComponent.h src/rendering/RenderComponent.cpp src/rendering/UiComponent.cpp)
+set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES})
 
 add_executable(titus main.cpp ${SOURCE_FILES})
 

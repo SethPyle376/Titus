@@ -1,0 +1,5 @@
+{
+  "name": "TestMaterialName",
+  "vertexShader": "resources:/testVertShader.spv",
+  "fragmentShader": "resources:/testFragShader.spv"
+}

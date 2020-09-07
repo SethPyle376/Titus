@@ -14,7 +14,7 @@ public:
     ~TestResource() override {
       std::cout << "DELETING TEST RESOURCE" << std::endl;
     }
-    void init(std::string filename) override;
+    void init(const std::string& filename) override;
     void destroy() override;
 };
 
