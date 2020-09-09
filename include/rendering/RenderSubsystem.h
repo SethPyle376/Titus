@@ -43,6 +43,10 @@ public:
     void onComponentUnregistered(UiComponent *component) override {
       std::cout << "RENDER COMPONENT UNREGISTERED WITH RENDER SUBSYSTEM" << std::endl;
     }
+
+    Renderer* getRenderer() {
+      return renderer;
+    }
 };
 
 #endif //TITUS_RENDERSUBSYSTEM_H

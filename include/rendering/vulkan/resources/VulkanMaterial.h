@@ -7,10 +7,11 @@
 
 #include "nlohmann/json.hpp"
 
+#include "volk.h"
+
 #include "files/FileSystem.h"
 #include <resources/Ref.h>
 #include <resources/Resource.h>
-#include <vulkan/vulkan.h>
 #include "VulkanShader.h"
 
 class VulkanMaterial : public Resource {

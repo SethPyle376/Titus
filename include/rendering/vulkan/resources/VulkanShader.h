@@ -8,9 +8,10 @@
 #include <iostream>
 
 #include <resources/Resource.h>
-#include <vulkan/vulkan.h>
 #include <vector>
 #include <files/File.h>
+#include "files/FileSystem.h"
+#include "rendering/RenderSubsystem.h"
 
 class VulkanShader : public Resource {
 public:

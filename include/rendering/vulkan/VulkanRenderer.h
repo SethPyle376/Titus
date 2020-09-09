@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "volk.h"
+
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_vulkan.h"
 #include "VulkanDevice.h"
@@ -42,6 +43,10 @@ private:
 public:
     VulkanRenderer(SDL_Window* window);
     ~VulkanRenderer();
+
+    VulkanDevice* getDevice() {
+      return device;
+    }
 };
 
 #endif //TITUS_VULKANRENDERER_H
