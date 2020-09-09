@@ -15,7 +15,7 @@ file(GLOB MAINSOURCES src/*.cpp)
 file(GLOB SUBSOURCES src/*/*.cpp)
 file(GLOB SUBSUBSOURCES src/*/*/*.cpp src/*/*/*/*.cpp)
 
-set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES})
+set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES} include/core/Config.h src/core/Config.cpp)
 
 add_executable(titus main.cpp ${SOURCE_FILES})
 

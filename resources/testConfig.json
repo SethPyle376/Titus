@@ -1,0 +1,13 @@
+{
+  "testElement": "test_value_hello_world",
+   "testParent": {
+     "testChild": "test_child_value"
+   },
+  "renderer": {
+    "type": "vulkan",
+    "dimensions": {
+      "x": 1920,
+      "y": 1080
+    }
+  }
+}

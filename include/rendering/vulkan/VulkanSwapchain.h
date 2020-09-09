@@ -19,6 +19,8 @@ private:
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
     VkSurfaceKHR surface;
 
+    SDL_Window* window;
+
     VulkanDevice* device;
 
     VkFormat colorFormat;

@@ -10,12 +10,16 @@
 #include "resources/ResourceManager.h"
 #include "resources/TestResource.h"
 
+#include "core/Config.h"
 #include "core/testing/TestSubsystem.h"
 
 #include "rendering/RenderSubsystem.h"
 #include "rendering/vulkan/resources/VulkanMaterial.h"
 
 int main() {
+  Config::load("resources:/testConfig.json");
+  std::cout << Config::globalConfig["testElement"].get<std::string>() << std::endl;
+  std::cout << Config::globalConfig["testParent"]["testChild"].get<std::string>() << std::endl;
 
   {
     Ref<TestResource> resource = ResourceManager::getInstance()->getResource<TestResource>("resources:/test.mp3");

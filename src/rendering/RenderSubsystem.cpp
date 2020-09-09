@@ -21,8 +21,10 @@ RenderSubsystem::RenderSubsystem() {
 
 void RenderSubsystem::initWindow() {
   uint32_t windowFlags = SDL_WINDOW_VULKAN;
+  int windowX = Config::globalConfig["renderer"]["dimensions"]["x"];
+  int windowY = Config::globalConfig["renderer"]["dimensions"]["y"];
   window = SDL_CreateWindow("TITUS", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                            1080, 720, windowFlags);
+                            windowX, windowY, windowFlags);
 }
 
 void RenderSubsystem::update(float delta) {

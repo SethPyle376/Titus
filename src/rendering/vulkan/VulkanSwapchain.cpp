@@ -23,6 +23,7 @@ void VulkanSwapchain::initSurface(SDL_Window *window) {
   } else {
     // TODO: log
   }
+  this->window = window;
 }
 
 VkSurfaceKHR VulkanSwapchain::getSurface() {
@@ -54,8 +55,13 @@ void VulkanSwapchain::createSwapchain(bool useVSync) {
   VkExtent2D swapchainExtent = {};
 
   if (surfaceCapabilities.currentExtent.width == (uint32_t)-1) {
-    swapchainExtent.width = 1080;
-    swapchainExtent.height = 720;
+    int windowX;
+    int windowY;
+
+    SDL_GetWindowSize(window, &windowX, &windowY);
+
+    swapchainExtent.width = windowX;
+    swapchainExtent.height = windowY;
   } else {
     swapchainExtent = surfaceCapabilities.currentExtent;
   }

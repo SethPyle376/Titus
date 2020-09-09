@@ -7,6 +7,8 @@
 
 #include <iostream>
 
+#include "core/Config.h"
+
 #include <rendering/vulkan/VulkanRenderer.h>
 #include <rendering/UiComponent.h>
 
