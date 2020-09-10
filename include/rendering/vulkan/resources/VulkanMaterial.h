@@ -8,6 +8,7 @@
 #include "nlohmann/json.hpp"
 
 #include "volk.h"
+#include "spirv_reflect.h"
 
 #include "files/FileSystem.h"
 #include <resources/Ref.h>
@@ -17,11 +18,11 @@
 class VulkanMaterial : public Resource {
 private:
     std::string name;
-    Ref<VulkanShader> vertexShader;
-    Ref<VulkanShader> fragmentShader;
+    Ref<VulkanShader>* vertexShader;
+    Ref<VulkanShader>* fragmentShader;
 public:
     void init(const std::string& filename) override;
-    void destroy();
+    void destroy() override;
 };
 
 #endif //TITUS_VULKANMATERIAL_H

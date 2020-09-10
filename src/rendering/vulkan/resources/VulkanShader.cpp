@@ -22,5 +22,6 @@ void VulkanShader::init(const std::string &filename) {
     // TODO: error/log
   } else {
     std::cout << "COMPILED SHADER: " << filename << std::endl;
+    std::cout << "SHADER LENGTH: " << shaderData.data.size() << std::endl;
   }
 }

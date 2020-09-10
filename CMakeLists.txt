@@ -10,12 +10,14 @@ include_directories("${PROJECT_SOURCE_DIR}/external/glm")
 include_directories("${PROJECT_SOURCE_DIR}/external/volk")
 include_directories(${SDL2_INCLUDE_DIRS})
 include_directories("${PROJECT_SOURCE_DIR}/external/json/single_include")
+include_directories("${PROJECT_SOURCE_DIR}/external/SPIRV-Reflect")
 
 file(GLOB MAINSOURCES src/*.cpp)
 file(GLOB SUBSOURCES src/*/*.cpp)
 file(GLOB SUBSUBSOURCES src/*/*/*.cpp src/*/*/*/*.cpp)
+file(GLOB REFLECTSOURCE external/SPIRV-Reflect/spirv_reflect.c)
 
-set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES} include/core/Config.h src/core/Config.cpp)
+set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES} ${REFLECTSOURCE})
 
 add_executable(titus main.cpp ${SOURCE_FILES})
 

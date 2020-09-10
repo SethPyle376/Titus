@@ -21,13 +21,6 @@ int main() {
   std::cout << Config::globalConfig["testElement"].get<std::string>() << std::endl;
   std::cout << Config::globalConfig["testParent"]["testChild"].get<std::string>() << std::endl;
 
-  {
-    Ref<TestResource> resource = ResourceManager::getInstance()->getResource<TestResource>("resources:/test.mp3");
-    {
-      Ref<TestResource> secondResource = ResourceManager::getInstance()->getResource<TestResource>("resources:/test.mp3");
-    }
-  }
-
   File testFile = FileSystem::getInstance()->readFile("resources:/test.txt");
 
   std::string testString = FileSystem::getInstance()->readFileToString("resources:/test.txt");
@@ -52,7 +45,8 @@ int main() {
 
   RenderSubsystem::getInstance()->update(123);
 
-  ResourceManager::getInstance()->getResource<VulkanMaterial>("resources:/testMaterial.json");
+  auto* testMaterial = ResourceManager::getInstance()->getResource<VulkanMaterial>("resources:/testMaterial.json");
+  delete testMaterial;
 
   return 0;
 }

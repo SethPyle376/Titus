@@ -17,7 +17,9 @@ class VulkanShader : public Resource {
 public:
     VulkanShader();
     void init(const std::string& filename) override;
-    void destroy() override {}
+    void destroy() override {
+      std::cout << "SHADER DESTROY WAS CALLED" << std::endl;
+    }
     VkShaderModule shaderModule;
     File shaderData;
 };
