@@ -15,6 +15,12 @@
 #include <resources/Resource.h>
 #include "VulkanShader.h"
 
+struct DescriptorSetLayoutData {
+    uint32_t setNumber;
+    VkDescriptorSetLayoutCreateInfo createInfo;
+    std::vector<VkDescriptorSetLayoutBinding> bindings;
+};
+
 class VulkanMaterial : public Resource {
 private:
     std::string name;
