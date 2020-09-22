@@ -13,6 +13,7 @@
 #include "SDL2/SDL_vulkan.h"
 #include "VulkanDevice.h"
 #include "VulkanSwapchain.h"
+#include "VulkanRenderpass.h"
 
 #include <rendering/Renderer.h>
 
@@ -36,6 +37,7 @@ private:
   VkInstance instance;
   VulkanDevice* device;
   VulkanSwapchain* swapchain;
+  VulkanRenderpass* renderpass;
 
   void loadInstance();
   bool checkValidationLayerSupport();

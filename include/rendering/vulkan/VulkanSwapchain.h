@@ -40,6 +40,8 @@ public:
     void connect(VulkanDevice* device);
     VkSurfaceKHR getSurface();
     void createSwapchain(bool useVSync = false);
+
+    VkFormat getFormat() { return colorFormat; }
 };
 
 #endif //TITUS_VULKANSWAPCHAIN_H

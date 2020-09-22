@@ -26,6 +26,10 @@ private:
     std::string name;
     Ref<VulkanShader>* vertexShader;
     Ref<VulkanShader>* fragmentShader;
+    VkPipeline pipeline;
+    VkPipelineLayout pipelineLayout;
+
+    std::vector<DescriptorSetLayoutData> vertLayoutData;
 public:
     void init(const std::string& filename) override;
     void destroy() override;

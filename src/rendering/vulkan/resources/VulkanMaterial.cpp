@@ -35,14 +35,14 @@ void VulkanMaterial::init(const std::string &filename) {
   std::vector<SpvReflectDescriptorSet*> sets(vertDescriptorSetCount);
   spvReflectEnumerateDescriptorSets(&vertexModule, &vertDescriptorSetCount, sets.data());
 
-  std::vector<DescriptorSetLayoutData> setLayouts(sets.size(), DescriptorSetLayoutData{});
+  vertLayoutData = std::vector<DescriptorSetLayoutData>(sets.size(), DescriptorSetLayoutData{});
 
   for (int i = 0; i < sets.size(); i++) {
     const SpvReflectDescriptorSet set = *(sets[i]);
-    setLayouts[i].bindings.resize(set.binding_count);
+    vertLayoutData[i].bindings.resize(set.binding_count);
     for (int j = 0; j < set.binding_count; j++) {
       const SpvReflectDescriptorBinding binding = *(set.bindings[j]);
-      VkDescriptorSetLayoutBinding& layoutBinding = setLayouts[i].bindings[j];
+      VkDescriptorSetLayoutBinding& layoutBinding = vertLayoutData[i].bindings[j];
       layoutBinding.binding = binding.binding;
       layoutBinding.descriptorType = static_cast<VkDescriptorType>(binding.descriptor_type);
       layoutBinding.descriptorCount = 1;
@@ -51,11 +51,33 @@ void VulkanMaterial::init(const std::string &filename) {
       }
       layoutBinding.stageFlags = static_cast<VkShaderStageFlagBits>(vertexModule.shader_stage);
     }
-    setLayouts[i].setNumber = set.set;
-    setLayouts[i].createInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
-    setLayouts[i].createInfo.bindingCount = set.binding_count;
-    setLayouts[i].createInfo.pBindings = setLayouts[i].bindings.data();
+    vertLayoutData[i].setNumber = set.set;
+    vertLayoutData[i].createInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
+    vertLayoutData[i].createInfo.bindingCount = set.binding_count;
+    vertLayoutData[i].createInfo.pBindings = vertLayoutData[i].bindings.data();
   }
+
+  std::vector<VkDescriptorSetLayout> layouts(vertLayoutData.size(), VkDescriptorSetLayout{});
+
+  auto* renderer = (VulkanRenderer*)RenderSubsystem::getInstance()->getRenderer();
+
+  VkDevice device = renderer->getDevice()->getLogicalDevice();
+
+  for (int i = 0; i < vertLayoutData.size(); i++) {
+    if (vkCreateDescriptorSetLayout(device, &vertLayoutData[i].createInfo, nullptr, &layouts[i]) != VK_SUCCESS) {
+      //TODO: log/error
+    }
+  }
+
+  VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo{};
+  pipelineLayoutCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
+  pipelineLayoutCreateInfo.setLayoutCount = layouts.size();
+  pipelineLayoutCreateInfo.pSetLayouts = layouts.data();
+
+  if (vkCreatePipelineLayout(device, &pipelineLayoutCreateInfo, nullptr, &pipelineLayout) != VK_SUCCESS) {
+    std::cout << "ERROR CREATING PIPELINE LAYOUT" << std::endl;
+  }
+  
   return;
 }
 
