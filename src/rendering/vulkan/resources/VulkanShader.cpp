@@ -24,4 +24,23 @@ void VulkanShader::init(const std::string &filename) {
     std::cout << "COMPILED SHADER: " << filename << std::endl;
     std::cout << "SHADER LENGTH: " << shaderData.data.size() << std::endl;
   }
+  processLayout();
+}
+
+void VulkanShader::processLayout() {
+  layout = ShaderResourceLayout{};
+  spirv_cross::Compiler compiler((uint32_t*)shaderData.data.data(), shaderData.data.size() / sizeof(uint32_t));
+  auto resources = compiler.get_shader_resources();
+
+  for (auto &buffer : resources.uniform_buffers) {
+    auto set = compiler.get_decoration(buffer.id, spv::DecorationDescriptorSet);
+    auto binding = compiler.get_decoration(buffer.id, spv::DecorationBinding);
+    layout.sets[set].uniform_buffer_mask |= 1u << binding;
+  }
+
+  if (!resources.push_constant_buffers.empty()) {
+    layout.pushConstantSize = compiler.get_declared_struct_size(compiler.get_type(resources.push_constant_buffers.front().base_type_id));
+  }
+
+  return;
 }

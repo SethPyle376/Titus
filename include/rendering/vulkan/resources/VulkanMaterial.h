@@ -9,17 +9,14 @@
 
 #include "volk.h"
 #include "spirv_reflect.h"
+#include "spirv_cross.hpp"
 
 #include "files/FileSystem.h"
 #include <resources/Ref.h>
 #include <resources/Resource.h>
 #include "VulkanShader.h"
+#include "rendering/vulkan/managers/VulkanDescriptorManager.h"
 
-struct DescriptorSetLayoutData {
-    uint32_t setNumber;
-    VkDescriptorSetLayoutCreateInfo createInfo;
-    std::vector<VkDescriptorSetLayoutBinding> bindings;
-};
 
 class VulkanMaterial : public Resource {
 private:

@@ -17,10 +17,11 @@ file(GLOB SUBSOURCES src/*/*.cpp)
 file(GLOB SUBSUBSOURCES src/*/*/*.cpp src/*/*/*/*.cpp)
 file(GLOB REFLECTSOURCE external/SPIRV-Reflect/spirv_reflect.c)
 
-set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES} ${REFLECTSOURCE} include/rendering/vulkan/VulkanRenderpass.h src/rendering/vulkan/VulkanRenderpass.cpp)
+set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES} ${REFLECTSOURCE} include/rendering/vulkan/VulkanRenderpass.h src/rendering/vulkan/VulkanRenderpass.cpp include/rendering/vulkan/managers/VulkanDescriptorManager.h src/rendering/vulkan/managers/VulkanDescriptorManager.cpp)
 
 add_executable(titus main.cpp ${SOURCE_FILES})
 
 add_subdirectory(external/volk)
+add_subdirectory(external/SPIRV-Cross)
 
-target_link_libraries(titus ${SDL2_LIBRARIES} volk volk_headers)
+target_link_libraries(titus ${SDL2_LIBRARIES} volk volk_headers spirv-cross-core)
