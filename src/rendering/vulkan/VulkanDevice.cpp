@@ -4,6 +4,8 @@
 
 #include "rendering/vulkan/VulkanDevice.h"
 
+#include "rendering/vulkan/resources/VulkanMaterial.h"
+
 VulkanDevice::VulkanDevice(VkInstance instance, VulkanSwapchain* swapchain, VkQueueFlags requestedQueueFlags) {
   this->instance = instance;
   this->swapchain = swapchain;
@@ -110,4 +112,38 @@ void VulkanDevice::initLogicalDevice() {
   } else {
     // TODO: log
   }
+}
+
+void VulkanDevice::bakeMaterial(VulkanMaterial *material) {
+  CombinedResourceLayout resourceLayout = {};
+
+  for (unsigned i = 0; i < ShaderStage::Count; i++) {
+    auto shader = material->getShader(static_cast<ShaderStage>(i));
+
+    uint32_t stageMask = 1u << i;
+
+    auto shaderLayout = shader->resource->getLayout();
+    for (unsigned set = 0; set < VULKAN_NUM_DESCRIPTOR_SETS; set++) {
+      resourceLayout.sets[set].uniform_buffer_mask |= shaderLayout.sets[set].uniform_buffer_mask;
+
+      uint32_t activeBinds = shaderLayout.sets[set].uniform_buffer_mask;
+
+      if (activeBinds) {
+        resourceLayout.stagesForSets[set] |= stageMask;
+      }
+
+      uint32_t value = activeBinds;
+      uint32_t binding = 0;
+      while (value) {
+        uint32_t stageValue = value & 1u;
+        std::cout << "BINDING: " << binding << " BINDING VALUE: " << stageValue << std::endl;
+        value >>= 1;
+        if (stageValue)
+          resourceLayout.stagesForBindings[set][binding] |= stageMask;
+        binding++;
+      }
+    }
+  }
+
+  material->setResourceLayout(resourceLayout);
 }

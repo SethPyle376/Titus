@@ -16,6 +16,8 @@ const std::vector<const char *> deviceExtensions = {
         VK_KHR_SWAPCHAIN_EXTENSION_NAME
 };
 
+class VulkanMaterial;
+
 class VulkanDevice {
 private:
     VkInstance instance;
@@ -41,6 +43,8 @@ public:
 
     VkPhysicalDevice getPhysicalDevice() { return physicalDevice; }
     VkDevice getLogicalDevice() { return logicalDevice; }
+
+    void bakeMaterial(VulkanMaterial* material);
 };
 
 #endif //TITUS_VULKANDEVICE_H
