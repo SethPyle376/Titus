@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.16.5)
 project(titus)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -17,7 +17,7 @@ file(GLOB SUBSOURCES src/*/*.cpp)
 file(GLOB SUBSUBSOURCES src/*/*/*.cpp src/*/*/*/*.cpp)
 file(GLOB REFLECTSOURCE external/SPIRV-Reflect/spirv_reflect.c)
 
-set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES} ${REFLECTSOURCE} include/rendering/vulkan/VulkanRenderpass.h src/rendering/vulkan/VulkanRenderpass.cpp include/rendering/vulkan/managers/VulkanDescriptorManager.h src/rendering/vulkan/managers/VulkanDescriptorManager.cpp)
+set(SOURCE_FILES ${MAINSOURCES} ${SUBSOURCES} ${SUBSUBSOURCES} ${REFLECTSOURCE} include/rendering/vulkan/VulkanRenderpass.h src/rendering/vulkan/VulkanRenderpass.cpp include/rendering/vulkan/managers/VulkanDescriptorManager.h src/rendering/vulkan/managers/VulkanDescriptorManager.cpp include/utils/Hasher.h)
 
 add_executable(titus main.cpp ${SOURCE_FILES})
 

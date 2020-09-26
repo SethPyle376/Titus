@@ -15,10 +15,8 @@ FileSystem* FileSystem::getInstance() {
 }
 
 FileSystem::FileSystem() {
-#ifdef __linux__
   this->fsType = FileSystemType::UNIX;
   this->driver = new UnixFileDriver();
-#endif
 }
 
 File FileSystem::readFile(const std::string& filePath) {
