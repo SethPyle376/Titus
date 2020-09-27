@@ -15,7 +15,7 @@
 #include <resources/Ref.h>
 #include <resources/Resource.h>
 #include "VulkanShader.h"
-#include "rendering/vulkan/managers/VulkanDescriptorManager.h"
+#include "rendering/vulkan/VulkanDescriptorSetAllocator.h"
 #include "rendering/vulkan/VulkanUtils.h"
 
 enum ShaderStage {
@@ -39,8 +39,6 @@ private:
     Ref<VulkanShader>* shaders[ShaderStage::Count];
     VkPipeline pipeline;
     VulkanPipelineLayout* pipelineLayout;
-
-    std::vector<DescriptorSetLayoutData> vertLayoutData;
 public:
     void init(const std::string& filename) override;
     void destroy() override;

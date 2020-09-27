@@ -6,11 +6,11 @@
 #define TITUS_VULKANDEVICE_H
 
 #include <vector>
+#include <map>
 
 #include "volk.h"
 #include "VulkanSwapchain.h"
 #include "VulkanUtils.h"
-#include "managers/VulkanShaderModuleManager.h"
 #include "utils/Hasher.h"
 
 const std::vector<const char *> deviceExtensions = {

@@ -15,6 +15,7 @@ class VulkanPipelineLayout
 public:
     VulkanPipelineLayout(uint64_t hash, const CombinedResourceLayout& resourceLayout);
 private:
+    VkPipelineLayout pipelineLayout = VK_NULL_HANDLE;
     uint64_t hash;
     CombinedResourceLayout resourceLayout;
 };

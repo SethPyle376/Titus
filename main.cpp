@@ -3,12 +3,10 @@
 #define VOLK_IMPLEMENTATION
 #include "volk.h"
 
-#include "resources/Ref.h"
 #include "files/FileSystem.h"
 #include "scene/Node.h"
 
 #include "resources/ResourceManager.h"
-#include "resources/TestResource.h"
 
 #include "core/Config.h"
 #include "core/testing/TestSubsystem.h"

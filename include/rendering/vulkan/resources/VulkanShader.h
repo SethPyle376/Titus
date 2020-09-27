@@ -12,7 +12,7 @@
 #include <resources/Resource.h>
 #include <vector>
 #include <files/File.h>
-#include <rendering/vulkan/managers/VulkanDescriptorManager.h>
+#include <rendering/vulkan/VulkanDescriptorSetAllocator.h>
 #include "files/FileSystem.h"
 #include "rendering/RenderSubsystem.h"
 #include "rendering/vulkan/VulkanUtils.h"

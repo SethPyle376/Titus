@@ -137,7 +137,7 @@ void VulkanDevice::bakeMaterial(VulkanMaterial *material) {
       uint32_t binding = 0;
       while (value) {
         uint32_t stageValue = value & 1u;
-        std::cout << "BINDING: " << binding << " BINDING VALUE: " << stageValue << std::endl;
+        std::cout << "BINDING: " << binding << " STAGE VALUE: " << stageValue << std::endl;
         value >>= 1;
         if (stageValue)
           resourceLayout.stagesForBindings[set][binding] |= stageMask;
