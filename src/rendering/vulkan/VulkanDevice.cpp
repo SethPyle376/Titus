@@ -5,6 +5,7 @@
 #include "rendering/vulkan/VulkanDevice.h"
 
 #include "rendering/vulkan/resources/VulkanMaterial.h"
+#include "rendering/vulkan/VulkanPipelineLayout.h"
 
 VulkanDevice::VulkanDevice(VkInstance instance, VulkanSwapchain* swapchain, VkQueueFlags requestedQueueFlags) {
   this->instance = instance;
@@ -145,5 +146,21 @@ void VulkanDevice::bakeMaterial(VulkanMaterial *material) {
     }
   }
 
-  material->setResourceLayout(resourceLayout);
+  material->setPipelineLayout(this->requestPipelineLayout(resourceLayout));
+}
+
+VulkanPipelineLayout *VulkanDevice::requestPipelineLayout(const CombinedResourceLayout& resourceLayout) {
+  Hasher hasher;
+  hasher.data(reinterpret_cast<const uint32_t*>(resourceLayout.sets), sizeof(resourceLayout.sets));
+  hasher.data(&resourceLayout.stagesForBindings[0][0], sizeof(resourceLayout.stagesForBindings));
+
+  auto hash = hasher.getHash();
+
+  auto iter = pipelineLayouts.find(hash);
+
+  if (iter == pipelineLayouts.end()) {
+    pipelineLayouts[hash] = new VulkanPipelineLayout(hash, resourceLayout);
+  }
+
+  return pipelineLayouts[hash];
 }

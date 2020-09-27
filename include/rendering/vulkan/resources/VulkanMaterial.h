@@ -16,6 +16,7 @@
 #include <resources/Resource.h>
 #include "VulkanShader.h"
 #include "rendering/vulkan/managers/VulkanDescriptorManager.h"
+#include "rendering/vulkan/VulkanUtils.h"
 
 enum ShaderStage {
     Vertex = 0,
@@ -29,14 +30,15 @@ struct CombinedResourceLayout {
   uint32_t stagesForBindings[VULKAN_NUM_DESCRIPTOR_SETS][VULKAN_NUM_DESCRIPTOR_BINDINGS] = {};
 };
 
+class VulkanPipelineLayout;
+class VulkanShader;
 
 class VulkanMaterial : public Resource {
 private:
     std::string name;
     Ref<VulkanShader>* shaders[ShaderStage::Count];
     VkPipeline pipeline;
-    VkPipelineLayout pipelineLayout;
-    CombinedResourceLayout resourceLayout;
+    VulkanPipelineLayout* pipelineLayout;
 
     std::vector<DescriptorSetLayoutData> vertLayoutData;
 public:
@@ -44,7 +46,7 @@ public:
     void destroy() override;
     Ref<VulkanShader>* getShader(ShaderStage stage);
 
-    void setResourceLayout(const CombinedResourceLayout& resourceLayout);
+    void setPipelineLayout(VulkanPipelineLayout* pipelineLayout);
 };
 
 #endif //TITUS_VULKANMATERIAL_H

@@ -31,6 +31,6 @@ File FileSystem::readFile(const std::string& filePath) {
 
 std::string FileSystem::readFileToString(const std::string &filepath) {
   std::vector<char> data = this->readFile(filepath).data;
-  std::string dataString(data.data());
+  std::string dataString(data.data(), data.size());
   return dataString;
 }

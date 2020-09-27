@@ -12,6 +12,9 @@
 
 #include "volk.h"
 
+#define VULKAN_NUM_DESCRIPTOR_SETS 8
+#define VULKAN_NUM_DESCRIPTOR_BINDINGS 16
+
 struct QueueFamilyIndices {
     std::optional<uint32_t> graphicsFamily;
     std::optional<uint32_t> presentFamily;

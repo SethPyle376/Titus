@@ -11,12 +11,15 @@
 #include "VulkanSwapchain.h"
 #include "VulkanUtils.h"
 #include "managers/VulkanShaderModuleManager.h"
+#include "utils/Hasher.h"
 
 const std::vector<const char *> deviceExtensions = {
         VK_KHR_SWAPCHAIN_EXTENSION_NAME
 };
 
 class VulkanMaterial;
+class VulkanPipelineLayout;
+class CombinedResourceLayout;
 
 class VulkanDevice {
 private:
@@ -28,7 +31,6 @@ private:
     VkPhysicalDeviceFeatures physicalDeviceFeatures;
     VkPhysicalDeviceMemoryProperties physicalDeviceMemoryProperties;
 
-
     QueueFamilyIndices queueFamilyIndices;
     std::vector<VkQueueFamilyProperties> queueFamilyProperties;
 
@@ -36,8 +38,12 @@ private:
 
     VulkanSwapchain* swapchain;
 
+    std::map<uint64_t, VulkanPipelineLayout*> pipelineLayouts;
+
     void pickPhysicalDevice();
     void initLogicalDevice();
+
+    VulkanPipelineLayout* requestPipelineLayout(const CombinedResourceLayout& resourceLayout);
 public:
     VulkanDevice(VkInstance instance, VulkanSwapchain* swapchain, VkQueueFlags requestedQueueFlags);
 

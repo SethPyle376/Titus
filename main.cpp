@@ -46,7 +46,7 @@ int main() {
   RenderSubsystem::getInstance()->update(123);
 
   auto* testMaterial = ResourceManager::getInstance()->getResource<VulkanMaterial>("resources:/testMaterial.json");
-  auto* testMaterial2 = ResourceManager::getInstance()->getResource<VulkanMaterial>("resources:/testMaterial.json");
+  auto* testMaterial2 = ResourceManager::getInstance()->getResource<VulkanMaterial>("resources:/testMaterialCopy.json");
   delete testMaterial;
   delete testMaterial2;
 

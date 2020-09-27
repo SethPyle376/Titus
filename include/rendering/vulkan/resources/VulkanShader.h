@@ -15,9 +15,7 @@
 #include <rendering/vulkan/managers/VulkanDescriptorManager.h>
 #include "files/FileSystem.h"
 #include "rendering/RenderSubsystem.h"
-
-#define VULKAN_NUM_DESCRIPTOR_SETS 8
-#define VULKAN_NUM_DESCRIPTOR_BINDINGS 16
+#include "rendering/vulkan/VulkanUtils.h"
 
 struct ShaderResourceLayout {
     uint32_t pushConstantSize = 0;

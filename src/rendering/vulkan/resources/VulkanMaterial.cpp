@@ -3,6 +3,7 @@
 //
 
 #include "rendering/vulkan/resources/VulkanMaterial.h"
+#include "rendering/vulkan/VulkanPipelineLayout.h"
 
 void VulkanMaterial::init(const std::string &filename) {
   std::string materialFile = FileSystem::getInstance()->readFileToString(filename);
@@ -29,6 +30,7 @@ Ref<VulkanShader> *VulkanMaterial::getShader(ShaderStage stage) {
   return shaders[stage];
 }
 
-void VulkanMaterial::setResourceLayout(const CombinedResourceLayout &resourceLayout) {
-  this->resourceLayout = resourceLayout;
+void VulkanMaterial::setPipelineLayout(VulkanPipelineLayout *pipelineLayout) {
+  this->pipelineLayout = pipelineLayout;
 }
+
